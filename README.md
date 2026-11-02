@@ -32,3 +32,11 @@ java -jar target/habr-theatre-parser-1.0.0.jar 1 3
 java -jar target/habr-theatre-parser-1.0.0.jar 2
 ```
 Результат: output/publications.json, output/theatres.json, обложки — в images/
+
+ekvus-kirov.ru блокирует анонимные запросы и возвращает HTTP connect timed out. 
+Чтобы это обойти, создайте в корне проекта файл application-local.properties:
+```properties
+cookies.ekvus-kirov.ru = PHPSESSID=...; _ym_uid=...; _ym_d=...
+cookies.kirovdramteatr.ru = PHPSESSID=...; _ym_uid=...; _ym_d=...
+```
+Куки берутся из браузера: DevTools → Network → любой запрос → Request Headers → Cookie
